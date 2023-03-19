@@ -8,7 +8,6 @@ public class HashIDs : MonoBehaviour
     public int backwardsState;
     public int leftState;
     public int rightState;
-    public int jumpState;
 
     public int sprintBool;
 
@@ -21,7 +20,6 @@ public class HashIDs : MonoBehaviour
         backwardsState = Animator.StringToHash("Backwards");
         leftState = Animator.StringToHash("Left");
         rightState = Animator.StringToHash("Right");
-        jumpState = Animator.StringToHash("Jump");
 
         sprintBool = Animator.StringToHash("Sprinting");
 

@@ -61,10 +61,5 @@ public class FollowCamera : MonoBehaviour
                 offset = Vector3.Scale(offset, new Vector3(0.95f, 0.95f, 0.96f));
             }
         }
-
-
-
-
-
     }
 }
