@@ -4,15 +4,28 @@ using UnityEngine;
 
 public class HashIDs : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public int forwardsState;
+    public int backwardsState;
+    public int leftState;
+    public int rightState;
+    public int jumpState;
 
-    // Update is called once per frame
-    void Update()
+    public int sprintBool;
+
+    public int speedFloatH;
+    public int speedFloatV;
+
+    private void Awake()
     {
-        
+        forwardsState = Animator.StringToHash("BaseLayer.Forwards");
+        backwardsState = Animator.StringToHash("Backwards");
+        leftState = Animator.StringToHash("Left");
+        rightState = Animator.StringToHash("Right");
+        jumpState = Animator.StringToHash("Jump");
+
+        sprintBool = Animator.StringToHash("Sprinting");
+
+        speedFloatH = Animator.StringToHash("SpeedH");
+        speedFloatV = Animator.StringToHash("SpeedV");
     }
 }
