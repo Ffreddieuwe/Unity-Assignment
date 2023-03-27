@@ -11,11 +11,13 @@ public class FollowCamera : MonoBehaviour
     private float mouseY;
     private float mouseZ;
 
+
     // Start is called before the first frame update
     void Start()
     {
         offset = transform.position - target.transform.position;
     }
+
 
     private void LateUpdate()
     {
@@ -27,6 +29,7 @@ public class FollowCamera : MonoBehaviour
         mouseX = Input.GetAxis("Mouse X") / 200;
         mouseY = Input.GetAxis("Mouse Y") / 200;
         mouseZ = Input.GetAxis("Scroll Wheel");
+
 
         if (Input.GetMouseButton(1))
         {
