@@ -5,7 +5,7 @@ using UnityEngine;
 public class Excavator_Movement : MonoBehaviour
 {
     public float speedDampTime = 0.01f;
-    public float sensitivityX = 1.0f;
+    public float sensitivityX = 1.5f;
     public float verticalSpeed = 1.5f;
     public float horizontalSpeed = 1.5f;
 
@@ -25,7 +25,7 @@ public class Excavator_Movement : MonoBehaviour
         float v = Input.GetAxis("Vertical");
         float h = Input.GetAxis("Horizontal");
         bool sprint = Input.GetButton("Sprint");
-        Movement(v, h, sprint);
+        Movement(v, sprint);
 
         float turn = Input.GetAxis("Turn");
         Rotate(turn);
@@ -35,15 +35,26 @@ public class Excavator_Movement : MonoBehaviour
     {
         Rigidbody body = this.GetComponent<Rigidbody>();
 
-        if (mouseXInput != 0)
+
+        if (mouseXInput > 0)
         {
-            Quaternion deltaRotation = Quaternion.Euler(0f, mouseXInput * sensitivityX, 0f);
+            anim.SetFloat(hash.left_wheel_speed, 1.5f, speedDampTime, Time.deltaTime);
+            anim.SetFloat(hash.right_wheel_speed, -1.5f, speedDampTime, Time.deltaTime);
+            Quaternion deltaRotation = Quaternion.Euler(0f, (mouseXInput * sensitivityX) / 10, 0f);
+            body.MoveRotation(body.rotation * deltaRotation);
+        }
+        else if (mouseXInput < 0)
+        {
+            horizontalSpeed = -1.5f;
+            anim.SetFloat(hash.left_wheel_speed, horizontalSpeed, speedDampTime, Time.deltaTime);
+            anim.SetFloat(hash.right_wheel_speed, horizontalSpeed, speedDampTime, Time.deltaTime);
+            Quaternion deltaRotation = Quaternion.Euler(0f, (mouseXInput * sensitivityX) / 100, 0f);
             body.MoveRotation(body.rotation * deltaRotation);
         }
     }
 
 
-    void Movement(float vertical, float horizontal, bool sprinting)
+    void Movement(float vertical, bool sprinting)
     {
         if (vertical > 0)
         {
@@ -54,40 +65,11 @@ public class Excavator_Movement : MonoBehaviour
             verticalSpeed = -1.5f;
         }
 
-        if (horizontal > 0)
-        {
-            horizontalSpeed = 1.5f;
-        }
-        else if (horizontal < 0)
-        {
-            horizontalSpeed = -1.5f;
-        }
 
         if (vertical != 0)
         {
             anim.SetFloat(hash.left_wheel_speed, verticalSpeed, speedDampTime, Time.deltaTime);
             anim.SetFloat(hash.right_wheel_speed, verticalSpeed, speedDampTime, Time.deltaTime);
         }
-        else
-        {
-            anim.SetFloat(hash.left_wheel_speed, 0);
-            anim.SetFloat(hash.right_wheel_speed, 0);
-        }
-
-        if (horizontal > 0)
-        {
-            anim.SetFloat(hash.left_wheel_speed, horizontalSpeed, speedDampTime, Time.deltaTime);
-            anim.SetFloat(hash.right_wheel_speed, -horizontalSpeed, speedDampTime, Time.deltaTime);
-        }
-        else if (horizontal < 0)
-        {
-            anim.SetFloat(hash.left_wheel_speed, -horizontalSpeed, speedDampTime, Time.deltaTime);
-            anim.SetFloat(hash.right_wheel_speed, horizontalSpeed, speedDampTime, Time.deltaTime);
-        }
-        else
-        {
-            anim.SetFloat(hash.speedFloatH, 0);
-        }
-
     }
 }

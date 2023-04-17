@@ -15841,7 +15841,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 0
       minColor: {r: 1, g: 1, b: 1, a: 1}
-      maxColor: {r: 1, g: 1, b: 1, a: 1}
+      maxColor: {r: 0.7264151, g: 0.6942899, b: 0.44315886, a: 1}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
@@ -26427,10 +26427,10 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1137366087}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.04, y: 0.05, z: 0.018}
+  m_Size: {x: 0.04, y: 0.044, z: 0.018}
   m_Center: {x: 0.078, y: 0.05, z: 0.002}
 --- !u!95 &1137366093
 Animator:
