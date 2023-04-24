@@ -26391,12 +26391,12 @@ Rigidbody:
   m_GameObject: {fileID: 1137366087}
   serializedVersion: 2
   m_Mass: 5000
-  m_Drag: 5000
-  m_AngularDrag: 10
+  m_Drag: 0
+  m_AngularDrag: 1
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 64
   m_CollisionDetection: 0
 --- !u!114 &1137366090
 MonoBehaviour:
@@ -26410,10 +26410,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ace84677d7bc3b43a514a88bec59f64, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  moveSpeed: 1.5
   speedDampTime: 0.01
-  sensitivityX: 1
+  sensitivityX: 1.2
   verticalSpeed: 1.5
   horizontalSpeed: 1.5
+  armUp: 0
+  armLeft: 0
+  armRight: 0
 --- !u!4 &1137366091 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 22b242ee06158be4aa9bc87aeef3523d, type: 3}
@@ -26427,7 +26431,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1137366087}
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 0.04, y: 0.044, z: 0.018}
