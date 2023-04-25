@@ -9,6 +9,8 @@ public class PlayerMovement : MonoBehaviour
     public float animationSpeedV = 1.5f;
     public float animationSpeedH = 1.5f;
 
+    public Camera excavatorCam;
+
     private Animator anim;
     private HashIDs hash;
 
@@ -16,19 +18,23 @@ public class PlayerMovement : MonoBehaviour
     {
         anim = GetComponent<Animator>();
         hash = GameObject.FindGameObjectWithTag("GameController").GetComponent<HashIDs>();
+        excavatorCam.enabled = false;
 
         anim.SetLayerWeight(1, 1f);
     }
 
     private void FixedUpdate()
     {
-        float v = Input.GetAxis("Vertical");
-        float h = Input.GetAxis("Horizontal");
-        bool sprint = Input.GetButton("Sprint");
-        Movement(v, sprint);
+        if(!excavatorCam.enabled)
+        {
+            float v = Input.GetAxis("Vertical");
+            float h = Input.GetAxis("Horizontal");
+            bool sprint = Input.GetButton("Sprint");
+            Movement(v, sprint);
 
-        float turn = Input.GetAxis("Turn");
-        Rotate(h);
+            float turn = Input.GetAxis("Turn");
+            Rotate(h);
+        }
     }
 
     void Rotate(float horizontal)

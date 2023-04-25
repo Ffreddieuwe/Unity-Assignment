@@ -19,8 +19,12 @@ public class Excavator_Movement : MonoBehaviour
     private Animator anim;
     private HashIDs hash;
 
+    public Camera player_camera;
+
     private void Awake()
     {
+        player_camera.enabled = true;
+
         excavator = this.GetComponent<Rigidbody>();
 
         anim = GetComponent<Animator>();
